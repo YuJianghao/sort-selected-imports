@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/YuJianghao/sort-selected-imports/compare/v0.0.3...v0.0.4) (2022-01-05)
+
+
+### Bug Fixes
+
+* support import a as b format ([d5f28d2](https://github.com/YuJianghao/sort-selected-imports/commit/d5f28d2342a4b3fe24cb91b5a8f8cdc9efc67d53))
+
 ### [0.0.3](https://github.com/YuJianghao/sort-selected-imports/compare/v0.0.2...v0.0.3) (2022-01-05)
 
 
