@@ -14,6 +14,15 @@ None
 
 ## Release Notes
 
+### 0.0.3
+
+- FEAT: sort by file name at last
+
+### 0.0.2
+
+- FIX: say hi every time
+- FIX: treat scope package as local
+
 ### 0.0.1
 
 Initial release
