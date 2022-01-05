@@ -3,7 +3,6 @@ import { findRecords, IRecord, RecordType } from "./records";
 import { ITokenResult, tokenize } from "./tokenize";
 
 export function sort() {
-  vscode.window.showInformationMessage("hi");
   const textEditor = vscode.window.activeTextEditor;
   if (!textEditor) {
     return;
