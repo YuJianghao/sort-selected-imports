@@ -14,6 +14,10 @@ None
 
 ## Release Notes
 
+### 0.0.4
+
+- FIX: support import a as b format
+
 ### 0.0.3
 
 - FEAT: sort by file name at last
