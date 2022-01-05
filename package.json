@@ -3,6 +3,7 @@
   "displayName": "sort-selected-imports",
   "description": "Sort selected es6 imports for js or ts",
   "version": "0.0.1",
+  "publisher": "winwin2011",
   "engines": {
     "vscode": "^1.63.0"
   },
