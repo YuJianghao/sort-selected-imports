@@ -22,7 +22,7 @@ export const TOKEN_MAP: {
   "*": ["as"],
   as: ["word"],
   from: ["file"],
-  word: ["from", "}", ","],
+  word: ["from", "}", ",", "as"],
   file: [],
   ",": ["}", "word"],
 };

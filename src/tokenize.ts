@@ -14,11 +14,28 @@ export interface ITokenResult {
 }
 
 export function tokenize(code: string) {
-  const str0 = addSpaceToComa(code);
-  const str1 = replaceSemi(str0);
-  const str2 = transformSingleQuotToDouble(str1);
-  const words = splitToWords(str2);
+  const str = compose([
+    addSpaceToBrace,
+    addSpaceToComa,
+    replaceSemi,
+    transformSingleQuotToDouble,
+  ])(code);
+  const words = splitToWords(str);
   return words.map(wordToToken);
+}
+
+function compose(fns: ((str: string) => string)[]) {
+  return (str: string): string => {
+    if (fns.length === 1) {
+      return fns[0](str);
+    }
+    const fn = fns[0];
+    return compose(fns.slice(1))(fn(str));
+  };
+}
+
+function addSpaceToBrace(code: string): string {
+  return code.split("{").join(" { ").split("}").join(" } ");
 }
 
 function addSpaceToComa(code: string): string {
