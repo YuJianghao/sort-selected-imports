@@ -2,7 +2,7 @@
   "name": "sort-selected-imports",
   "displayName": "sort-selected-imports",
   "description": "Sort selected es6 imports for js or ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "winwin2011",
   "repository": {
     "url": "https://github.com/YuJianghao/sort-selected-imports"
