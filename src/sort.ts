@@ -68,8 +68,8 @@ const LV_MAP: RecordType[] = [
   "import a from 'file'",
   "import 'file'",
 ];
-const LOCAL_SRC = /^~.*$/;
-const LOCAL_COMPONENT = /^@.*$/;
+const LOCAL_SRC = /^~\/.*$/;
+const LOCAL_COMPONENT = /^@\/.*$/;
 const LOCAL = /^\..*$/;
 function sortRecords(records: IRecord[]): IRecord[] {
   function getFileRaw(record: IRecord) {
