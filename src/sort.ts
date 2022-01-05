@@ -100,6 +100,6 @@ function sortRecords(records: IRecord[]): IRecord[] {
     if (lvta !== lvtb) {
       return lvta > lvtb ? 1 : -1;
     }
-    return 0;
+    return getFileRaw(a) > getFileRaw(b) ? 1 : -1;
   });
 }
