@@ -14,6 +14,10 @@ None
 
 ## Release Notes
 
+### 0.0.5
+
+- FEAT: support import type
+
 ### 0.0.4
 
 - FIX: support import a as b format
