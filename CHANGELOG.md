@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/YuJianghao/sort-selected-imports/compare/v0.0.4...v0.0.5) (2022-01-06)
+
+
+### Features
+
+* import type ([e1b1908](https://github.com/YuJianghao/sort-selected-imports/commit/e1b1908e2611d6e41bf632bc5df563ef8bda014a))
+
 ### [0.0.4](https://github.com/YuJianghao/sort-selected-imports/compare/v0.0.3...v0.0.4) (2022-01-05)
 
 
