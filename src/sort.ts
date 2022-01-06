@@ -53,7 +53,7 @@ function sortLine(record: IRecord): IRecord {
       )
       .reduce((a, i) => [...a, ...i], []);
     const tokens = [
-      ...record.tokens.slice(0, 2),
+      ...record.tokens.slice(0, record.importType === "type" ? 3 : 2),
       ...middle,
       ...record.tokens.slice(-3),
     ];
