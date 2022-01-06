@@ -14,6 +14,10 @@ None
 
 ## Release Notes
 
+### 0.0.6
+
+- FIX: format lost brace
+
 ### 0.0.5
 
 - FEAT: support import type
