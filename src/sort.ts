@@ -57,7 +57,7 @@ function sortLine(record: IRecord): IRecord {
       ...middle,
       ...record.tokens.slice(-3),
     ];
-    return { tokens, type: record.type };
+    return { ...record, tokens };
   }
 }
 
@@ -89,7 +89,20 @@ function sortRecords(records: IRecord[]): IRecord[] {
   function getTypeLevel(record: IRecord) {
     return LV_MAP.indexOf(record.type);
   }
+  function getImportTypeLevel(record: IRecord) {
+    if (record.importType === "type") {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
   return records.sort((a, b) => {
+    const lvita = getImportTypeLevel(a);
+    const lvitb = getImportTypeLevel(b);
+    if (lvita !== lvitb) {
+      return lvita > lvitb ? 1 : -1;
+    }
+
     const lva = getLevel(a);
     const lvb = getLevel(b);
     if (lva !== lvb) {

@@ -7,7 +7,8 @@ export type Token =
   | "from"
   | "word"
   | "file"
-  | ",";
+  | ","
+  | "type";
 export interface ITokenResult {
   raw: string;
   token: Token;
@@ -77,6 +78,9 @@ function wordToToken(word: string): ITokenResult {
     return { raw: word, token: word };
   }
   if ("," === word) {
+    return { raw: word, token: word };
+  }
+  if ("type" === word) {
     return { raw: word, token: word };
   }
   if (word.length > 1 && word.startsWith('"') && word.endsWith('"')) {

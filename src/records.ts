@@ -1,4 +1,5 @@
 import { ITokenResult, Token } from "./tokenize";
+import { getPrintStrings } from "./utils";
 
 // import 'file'
 // import a from 'file'
@@ -9,14 +10,18 @@ export type RecordType =
   | "import a from 'file'"
   | "import { a } from 'file'"
   | "import * as b from 'file'";
+
+export type ImportType = "value" | "type";
+
 export interface IRecord {
   tokens: ITokenResult[];
   type: RecordType;
+  importType: ImportType;
 }
 export const TOKEN_MAP: {
   [key in Token]: Token[];
 } = {
-  import: ["file", "word", "{", "*"],
+  import: ["file", "word", "{", "*", "type"],
   "{": ["word"],
   "}": ["from"],
   "*": ["as"],
@@ -25,6 +30,7 @@ export const TOKEN_MAP: {
   word: ["from", "}", ",", "as"],
   file: [],
   ",": ["}", "word"],
+  type: ["{", "word", "*"],
 };
 
 class Stack<T> {
@@ -59,8 +65,10 @@ export function findRecords(tokens: ITokenResult[]): IRecord[] {
         }
         record.push(pre);
         record.push(token);
+        const importType: ImportType =
+          record[1].token === "type" ? "type" : "value";
         const type: RecordType = (() => {
-          const t = record[1];
+          const t = record[importType === "type" ? 2 : 1];
           if (t.token === "file") {
             return "import 'file'";
           }
@@ -73,17 +81,25 @@ export function findRecords(tokens: ITokenResult[]): IRecord[] {
           if (t.token === "*") {
             return "import * as b from 'file'";
           }
-          throw new Error(`unexpected second token: ${JSON.stringify(t)}`);
+          throw new Error(
+            `Import No.${records.length}: Unexpected Token: ${JSON.stringify(
+              t
+            )}`
+          );
         })();
-        records.push({ tokens: record, type });
+
+        records.push({ tokens: record, type, importType });
         continue;
       }
       stack.push(pre);
       stack.push(token);
       continue;
     } else {
-      console.log("unexpected tokens:", pre.token, token.token);
-      stack.clear();
+      throw new Error(
+        `Import No.${records.length}: Unexpected Token '${token.raw}' after '${
+          pre.raw
+        }': expected: ${getPrintStrings(TOKEN_MAP[pre.token])}`
+      );
     }
   }
   return records;
